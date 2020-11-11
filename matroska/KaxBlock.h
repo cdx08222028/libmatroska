@@ -45,6 +45,8 @@
 
 using namespace LIBEBML_NAMESPACE;
 
+#define KAX_BLOCK_STORE_TIMESTAMP
+
 START_LIBMATROSKA_NAMESPACE
 
 class KaxCluster;
@@ -266,6 +268,8 @@ class MATROSKA_DLL_API KaxInternalBlock : public EbmlBinary {
     bool IsInvisible() const { return mInvisible; }
 
     uint64 ClusterPosition() const;
+
+    int16 GetStoredTimestamp() const { return LocalTimecode; }
 
   protected:
     std::vector<DataBuffer *> myBuffers;
